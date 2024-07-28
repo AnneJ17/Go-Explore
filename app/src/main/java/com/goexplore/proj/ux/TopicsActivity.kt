@@ -1,6 +1,7 @@
 package com.goexplore.proj.ux
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -49,7 +50,11 @@ class TopicsActivity : AppCompatActivity() {
                                 LinearLayoutManager.HORIZONTAL,
                                 false
                             )
-                            itemRecyclerView.adapter = VisualsAdapter(items)
+                            val visualAdapter = VisualsAdapter()
+                            itemRecyclerView.adapter = visualAdapter
+                            visualAdapter.submitList(items)
+                            Log.d("Visual", "items: $items")
+
                         } else {
                             itemRecyclerView.layoutManager =
                                 GridLayoutManager(this@TopicsActivity, 3)

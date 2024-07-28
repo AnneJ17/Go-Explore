@@ -3,10 +3,8 @@ package com.goexplore.proj.ux
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.goexplore.proj.R
 import com.goexplore.proj.data.models.TopicItem
 
@@ -30,16 +28,14 @@ class GridItemAdapter(
 
     override fun getItemCount() = items.size
 
-    class GridItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val image: ImageView = itemView.findViewById(R.id.itemEmoji)
-        private val text: TextView = itemView.findViewById(R.id.itemText)
+    inner class GridItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val itemEmoji: TextView = itemView.findViewById(R.id.itemEmoji)
+        private val itemText: TextView = itemView.findViewById(R.id.itemText)
 
         fun bind(item: TopicItem) {
-            text.text = item.label
-            if (item.photo != null) {
-                Glide.with(itemView.context).load(item.photo).into(image)
-            } else {
-//                image.setImageResource(R.drawable.default_image) // Or some placeholder
+            itemText.text = item.label
+            item.emoji?.let {
+                itemEmoji.text = it
             }
         }
     }

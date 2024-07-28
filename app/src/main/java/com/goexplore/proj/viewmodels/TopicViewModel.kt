@@ -1,5 +1,6 @@
 package com.goexplore.proj.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.goexplore.proj.data.TopicRepository
@@ -26,19 +27,21 @@ constructor(
     init {
         viewModelScope.launch {
             val response = repository.getTopics()
-            val dynamicTopics = mutableListOf<Pair<String, List<TopicItem>>>()
+            Log.d("topicVM", "Response: $response")
+            val topics = mutableListOf<Pair<String, List<TopicItem>>>()
 
-            if (response.sound.isNotEmpty()) {
-                dynamicTopics.add("Sound" to response.sound)
+            response.let {
+                if (it.sound != null && it.sound.isNotEmpty()) {
+                    topics.add("Sound" to it.sound)
+                }
+                if (it.visuals != null && it.visuals.isNotEmpty()) {
+                    topics.add("Visuals" to it.visuals)
+                }
+                if (it.places != null && it.places.isNotEmpty()) {
+                    topics.add("Places" to it.places)
+                }
             }
-            if (response.visuals.isNotEmpty()) {
-                dynamicTopics.add("Visuals" to response.visuals)
-            }
-            if (response.places.isNotEmpty()) {
-                dynamicTopics.add("Places" to response.places)
-            }
-
-            _topics.value = dynamicTopics
+            _topics.value = topics
         }
     }
 }

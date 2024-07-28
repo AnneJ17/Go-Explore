@@ -1,13 +1,15 @@
 package com.goexplore.proj.data.models
 
+import com.google.gson.annotations.SerializedName
+
 data class TopicResponse(
-    val sound: List<TopicItem>,
-    val visuals: List<TopicItem>,
-    val places: List<TopicItem>
+    @SerializedName("Sound") val sound: List<TopicItem>,
+    @SerializedName("Visuals") val visuals: List<TopicItem>,
+    @SerializedName("Places") val places: List<TopicItem>
 )
 
 data class TopicItem(
-    val label: String,
-    val emoji: String? = null,
-    val photo: String? = null
+    @SerializedName("label") val label: String,
+    @SerializedName("emoji") val emoji: String? = null,
+    @SerializedName("photo") val photo: String? = null
 )
