@@ -2,7 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_horizontal">
+
+    <!-- Heading -->
+    <TextView
+        android:id="@+id/heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/topic_heading"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Subtitle -->
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/topic_subtitle"
+        android:textSize="14sp"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="16dp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,6 +43,7 @@
         android:id="@+id/nextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/next_button"
         android:layout_gravity="center_horizontal"
-        android:text="Next" />
+        android:layout_marginTop="16dp" />
 </LinearLayout>

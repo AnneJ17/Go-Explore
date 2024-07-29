@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Go Explore</string>
+
+    // Topic Activity
+    <string name="topic_heading">What are topics you enjoy talking about?</string>
+    <string name="topic_subtitle">Topics will appear on your profile and help you find interesting places.</string>
+    <string name="next_button">Next</string>
 </resources>

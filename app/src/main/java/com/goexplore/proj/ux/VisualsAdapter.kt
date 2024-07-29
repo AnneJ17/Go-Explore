@@ -33,7 +33,6 @@ class VisualsAdapter : ListAdapter<TopicItem, VisualsAdapter.VisualsViewHolder>(
                 Glide.with(itemView.context)
                     .load(it)
 //                    .placeholder(R.drawable.placeholder) // Optional placeholder
-                    .error(R.drawable.ic_launcher_foreground) // Fallback image
                     .into(photo)
             } ?: run {
                 photo.setImageResource(R.drawable.ic_launcher_foreground) // Set a default image or placeholder

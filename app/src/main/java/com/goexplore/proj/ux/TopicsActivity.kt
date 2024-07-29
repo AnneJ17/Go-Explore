@@ -1,7 +1,6 @@
 package com.goexplore.proj.ux
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.goexplore.proj.R
-import com.goexplore.proj.data.models.TopicItem
 import com.goexplore.proj.viewmodels.TopicViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -53,14 +51,11 @@ class TopicsActivity : AppCompatActivity() {
                             val visualAdapter = VisualsAdapter()
                             itemRecyclerView.adapter = visualAdapter
                             visualAdapter.submitList(items)
-                            Log.d("Visual", "items: $items")
-
                         } else {
                             itemRecyclerView.layoutManager =
                                 GridLayoutManager(this@TopicsActivity, 3)
                             itemRecyclerView.adapter = GridItemAdapter(items) { item ->
                                 // Handle item click
-                                handleItemClick(item)
                             }
                         }
 
@@ -74,9 +69,4 @@ class TopicsActivity : AppCompatActivity() {
             }
         }
     }
-
-    private fun handleItemClick(item: TopicItem) {
-        // Handle item click logic here
-    }
-
 }
